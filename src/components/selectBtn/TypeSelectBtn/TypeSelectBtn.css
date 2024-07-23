@@ -1,0 +1,86 @@
+/* TypeSelectBtn.css */
+
+/* Container styling */
+.type-select-btn-container {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+/* Label styling */
+.type-select-btn-label {
+  position: absolute;
+  top: -6px;
+  left: 0.75rem; /* Tailwind's left-3 */
+  font-size: 0.75rem; /* Tailwind's text-xs */
+  color: #6b7280; /* Tailwind's text-slate-500 */
+  background-color: #ffffff; /* Tailwind's bg-white */
+}
+
+/* Button styling */
+.type-select-btn {
+  color: #000000; /* Tailwind's text-black */
+  border: 1px solid #000000; /* Tailwind's border */
+  font-weight: 500; /* Tailwind's font-medium */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  font-size: 0.875rem; /* Tailwind's text-sm */
+  padding: 10px 1.25rem; /* Tailwind's py-2.5 px-5 */
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  background-color: white;
+}
+
+.type-select-btn:hover {
+  border-color: #000000; /* Tailwind's hover:border-black */
+}
+
+/* Dropdown arrow styling */
+.type-select-btn-arrow {
+  width: 0.625rem; /* Tailwind's w-2.5 */
+  height: 0.625rem; /* Tailwind's h-2.5 */
+  margin-left: 0.75rem; /* Tailwind's ms-3 */
+  transition: transform 0.3s;
+}
+
+/* Dropdown menu styling */
+.type-select-btn-dropdown {
+  z-index: 10;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem; /* Tailwind's mt-2 */
+  width: 100%;
+  background-color: #ffffff; /* Tailwind's bg-white */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-lg */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  border: 1px solid #000000; /* Tailwind's ring-1 */
+  border-color: rgba(0, 0, 0, 0.2); /* Tailwind's ring-opacity-5 */
+  display: none;
+}
+
+.type-select-btn-dropdown.show {
+  display: block;
+}
+
+/* Dropdown item styling */
+.type-select-btn-dropdown-item {
+  padding: 0.5rem 1rem; /* Tailwind's px-4 py-2 */
+  cursor: pointer;
+}
+
+.type-select-btn-dropdown-item:hover {
+  background-color: #f3f4f6; /* Tailwind's hover:bg-gray-100 */
+}
+
+svg {
+  width: 0.625rem; /* Tailwind's w-2.5 */
+  height: 0.625rem; /* Tailwind's h-2.5 */
+  margin-left: 0.75rem; /* Tailwind's ms-3 */
+  transition: transform 0.2s ease;
+}
+
+svg.rotate {
+  transform: rotate(180deg);
+}

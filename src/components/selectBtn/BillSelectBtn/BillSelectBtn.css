@@ -1,0 +1,90 @@
+/* BillSelectBtn.css */
+
+.bill-select-container {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+}
+
+.bill-select-label {
+  color: #6b7280; /* Tailwind's text-slate-500 */
+  font-size: 0.75rem; /* Tailwind's text-xs */
+  position: absolute;
+  top: -0.375rem; /* Tailwind's top-[-6px] */
+  left: 0.75rem; /* Tailwind's left-3 */
+  background-color: #fff; /* Tailwind's bg-white */
+}
+
+.bill-select-button {
+  color: #000; /* Tailwind's text-black */
+  border: 1px solid #000; /* Tailwind's border */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  font-size: 0.875rem; /* Tailwind's text-sm */
+  padding: 10px 1.25rem; /* Tailwind's px-5 py-2.5 */
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #fff; /* Tailwind's bg-white */
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.bill-select-button:hover {
+  border-color: #000; /* Tailwind's hover:border-black */
+}
+
+.bill-select-button svg {
+  width: 0.625rem; /* Tailwind's w-2.5 */
+  height: 0.625rem; /* Tailwind's h-2.5 */
+  margin-left: 0.75rem; /* Tailwind's ms-3 */
+  transition: transform 0.2s ease;
+}
+
+.bill-select-button svg.rotate {
+  transform: rotate(180deg);
+}
+
+.bill-select-options {
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem; /* Tailwind's mt-2 */
+  width: 100%;
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Tailwind's shadow-lg */
+  background-color: #fff; /* Tailwind's bg-white */
+  border: 1px solid #000; /* Tailwind's ring-1 */
+}
+
+.bill-select-options a {
+  display: block;
+  padding: 0.5rem 1rem; /* Tailwind's px-4 py-2 */
+  font-size: 0.875rem; /* Tailwind's text-sm */
+  color: #374151; /* Tailwind's text-gray-700 */
+  text-decoration: none;
+}
+
+.bill-select-options a:hover {
+  background-color: #f3f4f6; /* Tailwind's hover:bg-gray-100 */
+}
+
+.dark .bill-select-button {
+  background-color: #2563eb; /* Tailwind's dark:bg-blue-600 */
+}
+
+.dark .bill-select-button:hover {
+  background-color: #1d4ed8; /* Tailwind's dark:hover:bg-blue-700 */
+}
+
+.dark .bill-select-options {
+  background-color: #374151; /* Tailwind's dark:bg-gray-700 */
+}
+
+.dark .bill-select-options a {
+  color: #e5e7eb; /* Tailwind's dark:text-gray-200 */
+}
+
+.dark .bill-select-options a:hover {
+  background-color: #4b5563; /* Tailwind's dark:hover:bg-gray-600 */
+  color: #000; /* Tailwind's dark:hover:text-black */
+}

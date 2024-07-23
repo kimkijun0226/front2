@@ -1,0 +1,14 @@
+/* MonthPicker.css */
+
+/* Container styling */
+.month-picker-container {
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  display: inline-block;
+}
+
+/* Flex container styling */
+.month-picker-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Tailwind's gap-3 */
+}

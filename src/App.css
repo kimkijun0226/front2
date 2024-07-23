@@ -1,0 +1,56 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+@import './reset.css';
+#root {
+  margin: 0 auto;
+  text-align: center;
+  height: 100vh;
+}
+
+body {
+  /* blue */
+  background-color: rgb(239 246 255);
+  /* slate */
+  /* background-color: rgb(241 245 249); */
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-weight: 400 !important;
+  position: relative;
+  padding: 0 2%;
+}
+
+a {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-weight: 500 !important;
+}
+
+/* datepicker padding 없애기 */
+.MuiStack-root {
+  padding-top: 0 !important;
+  border-radius: 0.5rem !important;
+  background-color: white !important;
+  overflow: visible !important;
+  align-items: center !important;
+
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.css-sx5hge > :not(style) ~ :not(style) {
+  margin-top: 0 !important;
+}
+
+.css-10o2lyd-MuiStack-root > :not(style) ~ :not(style) {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 750px) {
+  .MuiStack-root {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .time-picker {
+    justify-content: center !important;
+  }
+  .search-btn {
+    height: 100%;
+  }
+}

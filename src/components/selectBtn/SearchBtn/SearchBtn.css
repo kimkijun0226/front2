@@ -1,0 +1,27 @@
+/* SearchBtn.css */
+
+/* Container styling */
+.search-btn-container {
+  display: inline-block;
+}
+
+/* Button styling */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* Tailwind's gap-3 */
+  background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+  color: white;
+  font-weight: normal;
+  padding: 10px 20px; /* Tailwind's py-2 px-4 */
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.search-btn:hover {
+  background-color: #2563eb; /* Tailwind's hover:bg-blue-600 */
+}

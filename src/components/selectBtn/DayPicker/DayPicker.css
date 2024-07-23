@@ -1,0 +1,16 @@
+/* DayPicker.css */
+
+/* Container styling */
+.day-picker-container {
+  border-radius: 0.5rem; /* Tailwind's rounded-lg */
+  display: inline-block;
+  padding: 1rem; /* Padding for better spacing */
+}
+
+/* Flex container styling */
+.day-picker-flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem; /* Tailwind's gap-3 */
+}

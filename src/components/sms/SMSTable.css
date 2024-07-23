@@ -1,0 +1,86 @@
+.sms-table {
+  position: relative;
+  border-radius: 0.375rem;
+  margin: 0 2.5rem;
+}
+
+.sms-table-head {
+  width: 100%;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.sms-table-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  border: 1px solid #d1d5db;
+  background-color: #f1f5f9;
+}
+
+.sms-table-header div {
+  display: flex;
+  justify-content: center;
+  width: 16.666667%;
+  align-items: center;
+  border-right: 1px solid #d1d5db;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sms-table-body {
+  color: #000;
+  border-radius: 0.375rem;
+}
+
+.sms-table-row {
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s;
+}
+
+.sms-table-row:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+.sms-table-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.sms-table-row:hover {
+  background-color: #ebf8ff;
+}
+
+.sms-table-cell {
+  width: 16.666667%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+.sms-table-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  background-color: #e5e7eb;
+  height: 2rem;
+}
+
+.sms-table-footer div {
+  display: flex;
+  justify-content: center;
+  width: 16.666667%;
+  align-items: center;
+  border-right: 1px solid #d1d5db;
+  font-size: 1rem;
+  font-weight: 700;
+}

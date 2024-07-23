@@ -1,0 +1,94 @@
+.mmstable-container {
+  position: relative;
+  margin: 0 2.5rem;
+  border-radius: 0.375rem;
+}
+
+.mmstable-header {
+  width: 100%;
+  text-align: center;
+  color: #6b7280;
+}
+
+.mmstable-header-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f5f9;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+}
+
+.mmstable-header-cell {
+  flex: 1;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #6b7280;
+  font-weight: bold;
+  border-right: 1px solid #e5e7eb;
+}
+
+.mmstable-body {
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.375rem;
+}
+
+.mmstable-body-content {
+  overflow: hidden;
+}
+
+.mmstable-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.mmstable-row:hover {
+  background-color: #f0f9ff;
+}
+
+.mmstable-cell {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
+}
+
+.mmstable-cell:last-child {
+  border-right: none;
+}
+
+.even-row {
+  background-color: #f9fafb;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+.mmstable-summary {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background-color: #f9fafb;
+  padding: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mmstable-summary-cell {
+  width: 10%;
+  border-right: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.mmstable-summary-cell:first-child {
+  width: 20%;
+}
+
+.mmstable-summary-cell:last-child {
+  border-right: none;
+}
