@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import useStore from '../../../store/Store';
 
-import { ConfigProvider, DatePicker } from 'antd';
-import moment from 'moment';
+import { DatePicker } from 'antd';
+
 import dayjs, { Dayjs } from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
 import localeData from 'dayjs/plugin/localeData';
@@ -59,8 +59,8 @@ const DayPicker: React.FC = () => {
   }, [location.pathname, dailyData.endDate, mobileData.endDate, SMSData.endDate, MMSData.endDate]);
 
   // Handler for start date change
-  const handleStartDateChange = (value: dayjs.Dayjs | null) => {
-    if (value) {
+  const handleStartDateChange = (value: Dayjs | null) => {
+    if (value !== null && value !== undefined) {
       switch (location.pathname) {
         case '/daily':
           setDailyData({ ...dailyData, startDate: value.toDate() });
@@ -79,8 +79,8 @@ const DayPicker: React.FC = () => {
   };
 
   // Handler for end date change
-  const handleEndDateChange = (value: dayjs.Dayjs | null) => {
-    if (value) {
+  const handleEndDateChange = (value: Dayjs | null) => {
+    if (value !== null && value !== undefined) {
       switch (location.pathname) {
         case '/daily':
           setDailyData({ ...dailyData, endDate: value.toDate() });
@@ -104,13 +104,6 @@ const DayPicker: React.FC = () => {
     console.log(endValue);
   }, [startValue, endValue]);
 
-  const dateFormat = 'YYYY/MM/DD';
-  const weekFormat = 'MM/DD';
-  const monthFormat = 'YYYY/MM';
-
-  const startDayjs = startValue ? dayjs(startValue) : null;
-  const endDayjs = endValue ? dayjs(endValue) : null;
-
   return (
     <div className='day-picker-container'>
       <div className='day-picker-flex'>
@@ -118,11 +111,10 @@ const DayPicker: React.FC = () => {
 
         <RangePicker
           format='YYYY-MM-DD'
-          // defaultValue={[startValue ? dayjs(startValue): null, endValue]}
-          defaultValue={[startDayjs, endDayjs]}
-          onChange={(value, dateString) => {
-            handleStartDateChange(value[0] ? value[0] : null);
-            handleEndDateChange(value[1] ? value[1] : null);
+          defaultValue={[startValue ? dayjs(startValue) : null, endValue ? dayjs(endValue) : null]}
+          onChange={(value) => {
+            handleStartDateChange(value && value[0] ? value[0] : null);
+            handleEndDateChange(value && value[1] ? value[1] : null);
           }}
         />
       </div>
