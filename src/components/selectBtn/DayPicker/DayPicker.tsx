@@ -1,57 +1,20 @@
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import 'dayjs/locale/ko';
-import dayjs from 'dayjs';
-import useStore from '../../../store/Store';
-import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import './DayPicker.css'; // Import the CSS file
+import { useLocation } from 'react-router-dom';
+import useStore from '../../../store/Store';
+
+import { ConfigProvider, DatePicker } from 'antd';
+import moment from 'moment';
+import dayjs, { Dayjs } from 'dayjs';
+import weekday from 'dayjs/plugin/weekday';
+import localeData from 'dayjs/plugin/localeData';
+const { RangePicker } = DatePicker;
+
+dayjs.extend(weekday);
+dayjs.extend(localeData);
 
 const DayPicker: React.FC = () => {
   const { dailyData, setDailyData, mobileData, setMobileData, SMSData, setSMSData, MMSData, setMMSData } = useStore();
   const location = useLocation();
-
-  // Handler for start date change
-  const handleStartDateChange = (value: dayjs.Dayjs | null) => {
-    if (value) {
-      switch (location.pathname) {
-        case '/daily':
-          setDailyData({ ...dailyData, startDate: value.toDate() });
-          break;
-        case '/mobile':
-          setMobileData({ ...mobileData, startDate: value.toDate() });
-          break;
-        case '/sms':
-          setSMSData({ ...SMSData, startDate: value.toDate() });
-          break;
-        case '/mms':
-          setMMSData({ ...MMSData, startDate: value.toDate() });
-          break;
-      }
-    }
-  };
-
-  // Handler for end date change
-  const handleEndDateChange = (value: dayjs.Dayjs | null) => {
-    if (value) {
-      switch (location.pathname) {
-        case '/daily':
-          setDailyData({ ...dailyData, endDate: value.toDate() });
-          break;
-        case '/mobile':
-          setMobileData({ ...mobileData, endDate: value.toDate() });
-          break;
-        case '/sms':
-          setSMSData({ ...SMSData, endDate: value.toDate() });
-          break;
-        case '/mms':
-          setMMSData({ ...MMSData, endDate: value.toDate() });
-          break;
-      }
-    }
-  };
 
   // Get default values for start and end dates
   const dayStartValue = () => {
@@ -95,42 +58,73 @@ const DayPicker: React.FC = () => {
     setEndValue(dayEndValue());
   }, [location.pathname, dailyData.endDate, mobileData.endDate, SMSData.endDate, MMSData.endDate]);
 
+  // Handler for start date change
+  const handleStartDateChange = (value: dayjs.Dayjs | null) => {
+    if (value) {
+      switch (location.pathname) {
+        case '/daily':
+          setDailyData({ ...dailyData, startDate: value.toDate() });
+          break;
+        case '/mobile':
+          setMobileData({ ...mobileData, startDate: value.toDate() });
+          break;
+        case '/sms':
+          setSMSData({ ...SMSData, startDate: value.toDate() });
+          break;
+        case '/mms':
+          setMMSData({ ...MMSData, startDate: value.toDate() });
+          break;
+      }
+    }
+  };
+
+  // Handler for end date change
+  const handleEndDateChange = (value: dayjs.Dayjs | null) => {
+    if (value) {
+      switch (location.pathname) {
+        case '/daily':
+          setDailyData({ ...dailyData, endDate: value.toDate() });
+          break;
+        case '/mobile':
+          setMobileData({ ...mobileData, endDate: value.toDate() });
+          break;
+        case '/sms':
+          setSMSData({ ...SMSData, endDate: value.toDate() });
+          break;
+        case '/mms':
+          setMMSData({ ...MMSData, endDate: value.toDate() });
+          break;
+      }
+    }
+  };
+
+  useEffect(() => {
+    console.log(startValue);
+    console.log(dayjs(startValue));
+    console.log(endValue);
+  }, [startValue, endValue]);
+
+  const dateFormat = 'YYYY/MM/DD';
+  const weekFormat = 'MM/DD';
+  const monthFormat = 'YYYY/MM';
+
+  const startDayjs = startValue ? dayjs(startValue) : null;
+  const endDayjs = endValue ? dayjs(endValue) : null;
+
   return (
     <div className='day-picker-container'>
       <div className='day-picker-flex'>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='ko'>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker
-              label='시작 날짜를 선택해주세요'
-              slotProps={{
-                textField: {
-                  size: 'small',
-                },
-              }}
-              format={'YYYY / MM / DD'}
-              value={dayjs(startValue)}
-              onChange={handleStartDateChange}
-              openTo='day'
-              views={['year', 'month', 'day']}
-              className='date-picker' // Apply any additional styles if needed
-            />
-            <p>~</p>
-            <DatePicker
-              label='종료 날짜를 선택해주세요'
-              slotProps={{
-                textField: {
-                  size: 'small',
-                },
-              }}
-              format={'YYYY / MM / DD'}
-              value={dayjs(endValue)}
-              onChange={handleEndDateChange}
-              openTo='day'
-              views={['year', 'month', 'day']}
-              className='date-picker' // Apply any additional styles if needed
-            />
-          </DemoContainer>
-        </LocalizationProvider>
+        {/* <DatePicker format={dateFormat} picker='date' /> */}
+
+        <RangePicker
+          format='YYYY-MM-DD'
+          // defaultValue={[startValue ? dayjs(startValue): null, endValue]}
+          defaultValue={[startDayjs, endDayjs]}
+          onChange={(value, dateString) => {
+            handleStartDateChange(value[0] ? value[0] : null);
+            handleEndDateChange(value[1] ? value[1] : null);
+          }}
+        />
       </div>
     </div>
   );

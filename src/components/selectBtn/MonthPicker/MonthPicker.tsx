@@ -1,13 +1,13 @@
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import 'dayjs/locale/ko';
+import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import useStore from '../../../store/Store';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import 'antd/dist/reset.css'; // Import AntD styles
 import './MonthPicker.css'; // Import the CSS file
+import locale from 'antd/lib/locale/ko_KR';
+
+import { ConfigProvider } from 'antd';
+import { DatePicker } from 'antd';
 
 const MonthPicker = () => {
   const { dailyData, setDailyData, mobileData, setMobileData, SMSData, setSMSData, MMSData, setMMSData } = useStore();
@@ -32,46 +32,46 @@ const MonthPicker = () => {
   const [selectedMonth, setSelectedMonth] = useState(MonthValue());
 
   useEffect(() => {
+    console.log(selectedMonth);
+  }, [selectedMonth]);
+
+  useEffect(() => {
     setSelectedMonth(MonthValue());
   }, [location.pathname, dailyData.monthDate, mobileData.monthDate, SMSData.monthDate, MMSData.monthDate]);
 
   // Handler for month change
-  const monthChange = (value: dayjs.Dayjs | null) => {
-    if (value) {
+  const monthChange = (date: dayjs.Dayjs | null) => {
+    if (date) {
       switch (location.pathname) {
         case '/daily':
-          return setDailyData({ ...dailyData, monthDate: value.toDate() });
+          setDailyData({ ...dailyData, monthDate: date.toDate() });
+          break;
         case '/mobile':
-          return setMobileData({ ...mobileData, monthDate: value.toDate() });
+          setMobileData({ ...mobileData, monthDate: date.toDate() });
+          break;
         case '/sms':
-          return setSMSData({ ...SMSData, monthDate: value.toDate() });
+          setSMSData({ ...SMSData, monthDate: date.toDate() });
+          break;
         case '/mms':
-          return setMMSData({ ...MMSData, monthDate: value.toDate() });
+          setMMSData({ ...MMSData, monthDate: date.toDate() });
+          break;
+        default:
+          break;
       }
     }
   };
-
   return (
     <div className='month-picker-container'>
       <div className='month-picker-flex'>
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='ko'>
-          <DemoContainer components={['DatePicker']}>
-            <DatePicker
-              label='원하는 달을 선택해주세요'
-              value={dayjs(selectedMonth)}
-              slotProps={{
-                textField: {
-                  size: 'small',
-                },
-              }}
-              format={'YYYY / MM'}
-              onChange={monthChange}
-              openTo='month'
-              views={['year', 'month']}
-              className='date-picker' // Apply any additional styles if needed
-            />
-          </DemoContainer>
-        </LocalizationProvider>
+        <ConfigProvider locale={locale}>
+          <DatePicker
+            picker='month'
+            value={selectedMonth ? dayjs(selectedMonth) : null}
+            onChange={monthChange}
+            format='YYYY / MM'
+            className='date-picker' // Apply any additional styles if needed
+          />
+        </ConfigProvider>
       </div>
     </div>
   );
