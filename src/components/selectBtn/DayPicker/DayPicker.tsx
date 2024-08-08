@@ -107,8 +107,6 @@ const DayPicker: React.FC = () => {
   return (
     <div className='day-picker-container'>
       <div className='day-picker-flex'>
-        {/* <DatePicker format={dateFormat} picker='date' /> */}
-
         <RangePicker
           format='YYYY-MM-DD'
           defaultValue={[startValue ? dayjs(startValue) : null, endValue ? dayjs(endValue) : null]}

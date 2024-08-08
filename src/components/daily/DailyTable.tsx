@@ -27,44 +27,44 @@ const DailyTable: React.FC = () => {
 
   useEffect(() => {
     const formatMonthData = Object.entries(dailyData.monthAxiosData).map(([date, data]) => {
-      const smsData = data.find((item) => item.type === 'SMS');
-      const lmsData = data.find((item) => item.type === 'LMS');
+      const smsData = (data as any[]).find((item: any) => item.type === 'SMS');
+      const lmsData = (data as any[]).find((item: any) => item.type === 'LMS');
+
       return {
         date: date,
-        smsTotal: smsData?.todayTotal ?? 0,
-        smsSuccess: smsData?.todaySuccess ?? 0,
-        smsMonthTotal: smsData?.monthTotal ?? 0,
-        smsMonthSuccess: smsData?.monthSuccess ?? 0,
+        smsTotal: smsData?.todayTotal && Number(smsData?.todayTotal), // 숫자로 변환
+        smsSuccess: smsData?.todaySuccess && Number(smsData?.todaySuccess), // 숫자로 변환
+        smsMonthTotal: smsData?.monthTotal && Number(smsData?.monthTotal), // 숫자로 변환
+        smsMonthSuccess: smsData?.monthSuccess && Number(smsData?.monthSuccess), // 숫자로 변환
 
-        lmsTotal: lmsData?.todayTotal ?? 0,
-        lmsSuccess: lmsData?.todaySuccess ?? 0,
-        lmsMonthTotal: lmsData?.monthTotal ?? 0,
-        lmsMonthSuccess: lmsData?.monthSuccess ?? 0,
+        lmsTotal: lmsData?.todayTotal && Number(lmsData.todayTotal),
+        lmsSuccess: lmsData?.todaySuccess && Number(lmsData.todaySuccess),
+        lmsMonthTotal: lmsData?.monthTotal && Number(lmsData.monthTotal),
+        lmsMonthSuccess: lmsData?.monthSuccess && Number(lmsData.monthSuccess),
       };
     });
     setMonthItems(formatMonthData);
-    console.log(dailyData.monthAxiosData, '일별보고자료 : 월별 통계');
   }, [dailyData.monthAxiosData]);
 
   useEffect(() => {
     const formatDayData = Object.entries(dailyData.dayAxiosData).map(([date, data]) => {
-      const smsData = data.find((item) => item.type === 'SMS');
-      const lmsData = data.find((item) => item.type === 'LMS');
+      const smsData = (data as any[]).find((item: any) => item.type === 'SMS');
+      const lmsData = (data as any[]).find((item: any) => item.type === 'LMS');
+
       return {
         date: date,
-        smsTotal: smsData?.todayTotal ?? 0,
-        smsSuccess: smsData?.todaySuccess ?? 0,
-        smsMonthTotal: smsData?.monthTotal ?? 0,
-        smsMonthSuccess: smsData?.monthSuccess ?? 0,
+        smsTotal: smsData?.todayTotal && Number(smsData?.todayTotal), // 숫자로 변환
+        smsSuccess: smsData?.todaySuccess && Number(smsData?.todaySuccess), // 숫자로 변환
+        smsMonthTotal: smsData?.monthTotal && Number(smsData?.monthTotal), // 숫자로 변환
+        smsMonthSuccess: smsData?.monthSuccess && Number(smsData?.monthSuccess), // 숫자로 변환
 
-        lmsTotal: lmsData?.todayTotal ?? 0,
-        lmsSuccess: lmsData?.todaySuccess ?? 0,
-        lmsMonthTotal: lmsData?.monthTotal ?? 0,
-        lmsMonthSuccess: lmsData?.monthSuccess ?? 0,
+        lmsTotal: lmsData?.todayTotal && Number(lmsData.todayTotal),
+        lmsSuccess: lmsData?.todaySuccess && Number(lmsData.todaySuccess),
+        lmsMonthTotal: lmsData?.monthTotal && Number(lmsData.monthTotal),
+        lmsMonthSuccess: lmsData?.monthSuccess && Number(lmsData.monthSuccess),
       };
     });
     setDayItems(formatDayData);
-    console.log(dailyData.dayAxiosData, '일별보고자료 : 일별 통계');
   }, [dailyData.dayAxiosData]);
 
   return (
