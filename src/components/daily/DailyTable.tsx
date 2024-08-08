@@ -110,20 +110,20 @@ const DailyTable: React.FC = () => {
                 </div>
                 <div className='daily-table-row-data'>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.smsTotal.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.smsMonthTotal.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.smsTotal !== undefined && !isNaN(item.smsTotal) ? item.smsTotal.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.smsMonthTotal !== undefined && !isNaN(item.smsMonthTotal) ? item.smsMonthTotal.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.lmsTotal.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.lmsMonthTotal.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsTotal !== undefined && !isNaN(item.lmsTotal) ? item.lmsTotal.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsMonthTotal !== undefined && !isNaN(item.lmsMonthTotal) ? item.lmsMonthTotal.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.smsSuccess.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.smsMonthSuccess.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.smsSuccess !== undefined && !isNaN(item.smsSuccess) ? item.smsSuccess.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.smsMonthSuccess !== undefined && !isNaN(item.smsMonthSuccess) ? item.smsMonthSuccess.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.lmsSuccess.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.lmsMonthSuccess.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsSuccess !== undefined && !isNaN(item.lmsSuccess) ? item.lmsSuccess.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsMonthSuccess !== undefined && !isNaN(item.lmsMonthSuccess) ? item.lmsMonthSuccess.toLocaleString() : '조회중...'}</div>
                   </div>
                 </div>
               </div>
@@ -139,20 +139,20 @@ const DailyTable: React.FC = () => {
                 </div>
                 <div className='daily-table-row-data'>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.smsTotal.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.smsMonthTotal.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.smsTotal !== undefined && !isNaN(item.smsTotal) ? item.smsTotal.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.smsMonthTotal !== undefined && !isNaN(item.smsMonthTotal) ? item.smsMonthTotal.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.lmsTotal.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.lmsMonthTotal.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsTotal !== undefined && !isNaN(item.lmsTotal) ? item.lmsTotal.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsMonthTotal !== undefined && !isNaN(item.lmsMonthTotal) ? item.lmsMonthTotal.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.smsSuccess.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.smsMonthSuccess.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.smsSuccess !== undefined && !isNaN(item.smsSuccess) ? item.smsSuccess.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.smsMonthSuccess !== undefined && !isNaN(item.smsMonthSuccess) ? item.smsMonthSuccess.toLocaleString() : '조회중...'}</div>
                   </div>
                   <div className='daily-table-row-data-section'>
-                    <div className='daily-table-row-data-item'>{item.lmsSuccess.toLocaleString()}</div>
-                    <div className='daily-table-row-data-item'>{item.lmsMonthSuccess.toLocaleString()}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsSuccess !== undefined && !isNaN(item.lmsSuccess) ? item.lmsSuccess.toLocaleString() : '조회중...'}</div>
+                    <div className='daily-table-row-data-item'>{item.lmsMonthSuccess !== undefined && !isNaN(item.lmsMonthSuccess) ? item.lmsMonthSuccess.toLocaleString() : '조회중...'}</div>
                   </div>
                 </div>
               </div>

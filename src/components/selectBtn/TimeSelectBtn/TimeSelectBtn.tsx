@@ -1,76 +1,72 @@
 import useStore from '../../../store/Store';
-import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './TimeSelectBtn.css'; // Import the CSS file
+import { Select } from 'antd';
 
 const TimeSelectBtn = () => {
-  const { dailyData, setDailyData, mobileData, setMobileData, SMSData, setSMSData, MMSData, setMMSData } = useStore();
+  const {
+    dailyData,
+    setDailyData,
+    mobileData,
+    setMobileData,
+    SMSData,
+    setSMSData,
+    MMSData,
+    setMMSData,
+  } = useStore();
   const location = useLocation();
-  const [showMenu, setShowMenu] = useState(false); // 드롭다운 메뉴를 표시할 상태 추가
 
-  const handleItemClick = (item: string) => {
+  const options = [
+    { value: '17', label: '17시 기준' },
+    { value: '24', label: '24시 기준' },
+  ].filter(
+    (option) =>
+      (location.pathname === '/mobile' && (option.value === '17' || option.value === '24')) ||
+      (location.pathname === '/daily' && option.value === '17') ||
+      ((location.pathname === '/sms' || location.pathname === '/mms') && option.value === '24')
+  );
+
+  const handleChange = (value: string) => {
     switch (location.pathname) {
       case '/daily':
-        setDailyData({ ...dailyData, whatTime: item });
+        setDailyData({ ...dailyData, whatTime: value });
         break;
       case '/mobile':
-        setMobileData({ ...mobileData, whatTime: item });
+        setMobileData({ ...mobileData, whatTime: value });
         break;
       case '/sms':
-        setSMSData({ ...SMSData, whatTime: item });
+        setSMSData({ ...SMSData, whatTime: value });
         break;
       case '/mms':
-        setMMSData({ ...MMSData, whatTime: item });
+        setMMSData({ ...MMSData, whatTime: value });
+        break;
+      default:
         break;
     }
-    setShowMenu(false); // 메뉴 항목을 클릭했을 때 메뉴를 닫음
   };
 
-  const inputRef = useRef<HTMLDivElement | null>(null);
-  const dropDownRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    function handleMouseDown(event: MouseEvent) {
-      if (!inputRef.current?.contains(event.target as Node) && !dropDownRef.current?.contains(event.target as Node)) {
-        setShowMenu(false);
-      }
+  const getValue = () => {
+    switch (location.pathname) {
+      case '/daily':
+        return dailyData.whatTime;
+      case '/mobile':
+        return mobileData.whatTime;
+      case '/sms':
+        return SMSData.whatTime;
+      case '/mms':
+        return MMSData.whatTime;
+      default:
+        return ''; // 기본값으로 빈 문자열 반환
     }
-
-    window.addEventListener('mousedown', handleMouseDown);
-
-    return () => {
-      window.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, [inputRef, dropDownRef]);
+  };
 
   return (
-    <div ref={inputRef} className='time-select-container'>
-      <div className='time-select-label'>시간 선택</div>
-      <button onClick={() => setShowMenu(!showMenu)} className='time-select-button'>
-        <>
-          <span>{location.pathname === '/daily' ? `${dailyData.whatTime}시 기준` : location.pathname === '/mobile' ? `${mobileData.whatTime}시 기준` : location.pathname === '/sms' ? `${SMSData.whatTime}시 기준` : location.pathname === '/mms' ? `${MMSData.whatTime}시 기준` : '17시'}</span>
-
-          <svg className={`arrow ${showMenu ? 'rotate' : ''}`} aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 10 6'>
-            <path stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='m1 1 4 4 4-4' />
-          </svg>
-        </>
-      </button>
-      {showMenu && (
-        <div ref={dropDownRef} className='time-select-menu'>
-          {location.pathname === '/mobile' || location.pathname === '/daily' ? (
-            <div className='time-select-menu-item' onClick={() => handleItemClick('17')}>
-              17시 기준
-            </div>
-          ) : null}
-
-          {location.pathname === '/mobile' || location.pathname === '/sms' || location.pathname === '/mms' ? (
-            <div className='time-select-menu-item' onClick={() => handleItemClick('24')}>
-              24시 기준
-            </div>
-          ) : null}
-        </div>
-      )}
-    </div>
+    <Select
+      placeholder='시간을 선택해 주세요'
+      value={getValue()}
+      onChange={handleChange}
+      options={options}
+    />
   );
 };
 

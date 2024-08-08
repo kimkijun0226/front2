@@ -27,6 +27,7 @@ export const dailyMonthData = async ({ dailyData, setDailyData }: { dailyData: D
   const grpCd = dailyData.grpCd;
   const billCd = dailyData.billCd;
   const monthSendDate = { groupCode: grpCd, billCode: billCd, type: 'O', fileName: [format] };
+  console.log(monthSendDate);
   const response: AxiosResponse = await instance.post(`/reports/today`, monthSendDate);
   const responseData = response.data[0] || [];
   setDailyData({ ...dailyData, monthAxiosData: responseData });

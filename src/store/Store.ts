@@ -38,6 +38,7 @@ interface smsItemData {
 interface useStore {
   dailyData: {
     grpCd: string;
+    selectedGroupBillCd: string[] | undefined;
     billCd: string;
 
     selectedDate: string; // 월별 일별
@@ -54,10 +55,23 @@ interface useStore {
     dayAxiosData: { [key: string]: dailyItemData[] }; // 일별 데이터
   };
 
-  setDailyData: (data: { grpCd: string; billCd: string; selectedDate: string; monthDate: Date; startDate: Date; endDate: Date; whatTime: string; messageType: string; monthAxiosData: { [key: string]: dailyItemData[] }; dayAxiosData: { [key: string]: dailyItemData[] } }) => void;
+  setDailyData: (data: {
+    selectedGroupBillCd: string[] | undefined;
+    grpCd: string;
+    billCd: string;
+    selectedDate: string;
+    monthDate: Date;
+    startDate: Date;
+    endDate: Date;
+    whatTime: string;
+    messageType: string;
+    monthAxiosData: { [key: string]: dailyItemData[] };
+    dayAxiosData: { [key: string]: dailyItemData[] };
+  }) => void;
 
   mobileData: {
     grpCd: string;
+    selectedGroupBillCd: string[] | undefined;
     billCd: string;
 
     selectedDate: string; // 월별 일별
@@ -75,10 +89,24 @@ interface useStore {
     monthAxiosData: { [key: string]: mobileItemData[] }; // 월별 데이터
     dayAxiosData: { [key: string]: mobileItemData[] }; // 일별 데이터
   };
-  setMobileData: (data: { grpCd: string; billCd: string; selectedDate: string; monthDate: Date; startDate: Date; endDate: Date; whatTime: string; messageType: string; mobile: string; monthAxiosData: { [key: string]: mobileItemData[] }; dayAxiosData: { [key: string]: mobileItemData[] } }) => void;
+  setMobileData: (data: {
+    selectedGroupBillCd: string[] | undefined;
+    grpCd: string;
+    billCd: string;
+    selectedDate: string;
+    monthDate: Date;
+    startDate: Date;
+    endDate: Date;
+    whatTime: string;
+    messageType: string;
+    mobile: string;
+    monthAxiosData: { [key: string]: mobileItemData[] };
+    dayAxiosData: { [key: string]: mobileItemData[] };
+  }) => void;
 
   SMSData: {
     grpCd: string;
+    selectedGroupBillCd: string[] | undefined;
     billCd: string;
 
     selectedDate: string; // 월별 일별
@@ -94,10 +122,23 @@ interface useStore {
     monthAxiosData: smsItemData[]; // 월별 데이터
     dayAxiosData: smsItemData[]; // 일별 데이터
   };
-  setSMSData: (data: { grpCd: string; billCd: string; selectedDate: string; monthDate: Date; startDate: Date; endDate: Date; whatTime: string; messageType: string; monthAxiosData: smsItemData[]; dayAxiosData: smsItemData[] }) => void;
+  setSMSData: (data: {
+    selectedGroupBillCd: string[] | undefined;
+    grpCd: string;
+    billCd: string;
+    selectedDate: string;
+    monthDate: Date;
+    startDate: Date;
+    endDate: Date;
+    whatTime: string;
+    messageType: string;
+    monthAxiosData: smsItemData[];
+    dayAxiosData: smsItemData[];
+  }) => void;
 
   MMSData: {
     grpCd: string;
+    selectedGroupBillCd: string[] | undefined;
     billCd: string;
 
     selectedDate: string; // 월별 일별
@@ -113,15 +154,29 @@ interface useStore {
     monthAxiosData: mmsItemData[]; // 월별 데이터
     dayAxiosData: mmsItemData[]; // 일별 데이터
   };
-  setMMSData: (data: { grpCd: string; billCd: string; selectedDate: string; monthDate: Date; startDate: Date; endDate: Date; whatTime: string; messageType: string; monthAxiosData: mmsItemData[]; dayAxiosData: mmsItemData[] }) => void;
+  setMMSData: (data: {
+    selectedGroupBillCd: string[] | undefined;
+    grpCd: string;
+    billCd: string;
+    selectedDate: string;
+    monthDate: Date;
+    startDate: Date;
+    endDate: Date;
+    whatTime: string;
+    messageType: string;
+    monthAxiosData: mmsItemData[];
+    dayAxiosData: mmsItemData[];
+  }) => void;
 }
 
 // 데이터
 
 const useStore = create<useStore>((set) => ({
   dailyData: {
-    grpCd: '',
-    billCd: '',
+    grpCd: '0',
+    selectedGroupBillCd: [],
+
+    billCd: '0',
 
     selectedDate: '월별 통계', // 월별 일별
 
@@ -146,8 +201,9 @@ const useStore = create<useStore>((set) => ({
     })),
 
   mobileData: {
-    grpCd: '',
-    billCd: '',
+    grpCd: '0',
+    selectedGroupBillCd: [],
+    billCd: '0',
 
     selectedDate: '월별 통계', // 월별 일별
 
@@ -174,8 +230,10 @@ const useStore = create<useStore>((set) => ({
     })),
 
   SMSData: {
-    grpCd: '',
-    billCd: '',
+    grpCd: '0',
+    selectedGroupBillCd: [],
+
+    billCd: '0',
 
     selectedDate: '월별 통계', // 월별 일별
 
@@ -200,8 +258,9 @@ const useStore = create<useStore>((set) => ({
     })),
 
   MMSData: {
-    grpCd: '',
-    billCd: '',
+    grpCd: '0',
+    selectedGroupBillCd: [],
+    billCd: '0',
 
     selectedDate: '월별 통계', // 월별 일별
 
